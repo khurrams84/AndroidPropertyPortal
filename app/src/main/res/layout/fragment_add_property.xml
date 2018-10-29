@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/standard_margin"
+    android:layout_marginLeft="@dimen/small_margin"
+    android:layout_marginRight="@dimen/small_margin"
+    android:background="@color/background">
+
+
+    <Button
+        android:id="@+id/btnAdd"
+        style="@style/ButtonStyle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/add" />
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnAdd"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true"
+        android:paddingTop="@dimen/standard_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_profilePic"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/house1"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/rlll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_profilePic"
+                android:layout_marginTop="@dimen/small_margin"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/small_margin"
+                android:paddingRight="@dimen/small_margin">
+
+                <!-- Title Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/title"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+                <!-- description Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/description"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="4" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Type Label -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/type"
+                        android:textColorHint="@color/font_color_title"
+                        android:textSize="@dimen/ts_title" />
+
+                    <Spinner
+                        android:id="@+id/spnType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </Spinner>
+                </LinearLayout>
+                <!-- Category Label -->
+                <LinearLayout
+                    android:id="@+id/rlCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/tvCategory"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/small_margin"
+                        android:text="@string/category"
+                        android:textSize="@dimen/ts_standard" />
+
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tvCategory"
+                        android:layout_weight="4"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/small_margin"
+                        android:weightSum="2">
+
+                        <RadioButton
+                            android:id="@+id/rbSale"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:padding="@dimen/standard_margin"
+                            android:text="@string/for_sale"
+                            android:textSize="@dimen/ts_standard" />
+
+                        <RadioButton
+                            android:id="@+id/rbRent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/standard_margin"
+                            android:text="@string/for_rent"
+                            android:textSize="@dimen/ts_standard" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+                <!-- PhoneNo Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/phone_no"
+                        android:inputType="phone" />
+                </android.support.design.widget.TextInputLayout>
+                <!-- City Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:hint="@string/city"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+                <!-- location Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:textColorHint="@color/font_color_title"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/etLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/location"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+                <!-- Address Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:hint="@string/address"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Area Unit Label -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/area_unit"
+                        android:textColorHint="@color/font_color_title"
+                        android:textSize="@dimen/ts_standard" />
+
+                    <Spinner
+                        android:id="@+id/spnAreaUnit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </Spinner>
+                </LinearLayout>
+                <!-- Area Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/area"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
+                <!-- Price Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:hint="@string/price"
+                    android:textColorHint="@color/font_color_title">
+
+                    <EditText
+                        android:id="@+id/etPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+

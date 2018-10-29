@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextViewStyle" parent="AppTheme">
+        <item name="android:textColor">@android:color/black</item>
+        <!--<item name="android:background">@color/app_green</item>-->
+        <item name="android:textSize">@dimen/ts_standard</item>
+    </style>
+
+    <style name="TextViewStyleAlert" parent="AppTheme">
+        <item name="android:textColor">@color/font_color_alert</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/ts_standard</item>
+    </style>
+
+    <style name="EditTextStyle" parent="AppTheme">
+        <item name="android:background">@drawable/button1_background</item>
+        <item name="android:padding">@dimen/small_margin</item>
+    </style>
+
+    <style name="ButtonStyle1" parent="AppTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/button1_background</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
+        <item name="android:paddingBottom">@dimen/standard_margin</item>
+        <item name="android:textSize">@dimen/ts_title</item>
+    </style>
+
+    <style name="ButtonStyle2" parent="AppTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/button2_background</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
+        <item name="android:paddingBottom">@dimen/standard_margin</item>
+        <item name="android:textSize">@dimen/ts_title</item>
+    </style>
+
+    <style name="ButtonStyle3" parent="AppTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/button3_background</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
+        <item name="android:paddingBottom">@dimen/standard_margin</item>
+        <item name="android:textSize">@dimen/ts_title</item>
+    </style>
+
+    <style name="ButtonStyle4" parent="AppTheme">
+        <item name="android:textColor">@color/font_color_desc</item>
+        <item name="android:background">@drawable/button4_background</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
+        <item name="android:paddingBottom">@dimen/standard_margin</item>
+        <item name="android:textSize">@dimen/ts_title</item>
+    </style>
+
+    <style name="ButtonStyle5" parent="AppTheme">
+        <item name="android:textColor">@color/button_color_1</item>
+        <item name="android:background">@drawable/button5_background</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
+        <item name="android:paddingBottom">@dimen/standard_margin</item>
+        <item name="android:textSize">@dimen/ts_title</item>
+    </style>
+</resources>

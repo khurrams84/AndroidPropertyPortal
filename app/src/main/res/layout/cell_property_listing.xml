@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/small_margin"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="@dimen/small_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--Image and Price-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/house1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/standard_margin"
+                android:padding="@dimen/small_margin"
+                android:scaleType="centerInside"
+
+                android:src="@drawable/ic_favorite_border" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/standard_margin"
+                android:background="@color/translucent_white"
+                android:padding="@dimen/standard_margin">
+
+                <TextView
+                    style="@style/TextViewStyleAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$540,000" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standard_margin"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="181 Sloane Street Goulburn"
+                android:textColor="@color/font_color_desc"
+                android:textSize="@dimen/ts_vbig_title"
+                android:textStyle="normal" />
+
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="181 Sloane Street Goulburn NSW 2580"
+                android:textColor="@color/font_color_title"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

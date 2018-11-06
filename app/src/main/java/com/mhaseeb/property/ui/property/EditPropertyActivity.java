@@ -1,13 +1,9 @@
 package com.mhaseeb.property.ui.property;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,9 +14,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mhaseeb.property.R;
+import com.mhaseeb.property.ui.BaseActivity;
 import com.mhaseeb.property.ui.common.api.ApiClient;
+import com.mhaseeb.property.ui.common.config.IAPIConstants;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
-import com.mhaseeb.property.ui.home.HomeActivity;
+import com.mhaseeb.property.ui.common.utils.ImageUtil;
 import com.mhaseeb.property.ui.property.api.IPropertyAPIService;
 import com.mhaseeb.property.ui.property.model.PropertyModel;
 import com.mhaseeb.property.ui.property.model.PropertyResponseModel;
@@ -40,26 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AddPropertyFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AddPropertyFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class AddPropertyFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener, IPickResult {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
+public class EditPropertyActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener, IPickResult {
     //UI Widgets
     private Spinner spntype, spnAreaUnit;
     private RadioButton rbSale, rbRent;
@@ -72,114 +51,106 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
 
     private String type = "Select Type", areaUnit = "Select Area";
     private String category = "";
-
-    public AddPropertyFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddPropertyFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddPropertyFragment newInstance(String param1, String param2) {
-        AddPropertyFragment fragment = new AddPropertyFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private PropertyModel propertyModel;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        setContentView(R.layout.fragment_add_property);
+        handleIntent(getIntent());
+        init();
+    }
+
+    private void handleIntent(Intent intent) {
+        if (intent != null) {
+            propertyModel = (PropertyModel) getIntent().getSerializableExtra("property");
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_property, container, false);
-        init(view);
-        return view;
-    }
+    private void init() {
+        setTitle("Edit Property");
+        spntype = findViewById(R.id.spnType);
+        spnAreaUnit = findViewById(R.id.spnAreaUnit);
+        rbSale = findViewById(R.id.rbSale);
+        rbRent = findViewById(R.id.rbRent);
+        iv_profilePic = findViewById(R.id.iv_profilePic);
 
-    private void init(View view) {
-        getActivity().setTitle("Add Property");
-        spntype = view.findViewById(R.id.spnType);
-        spnAreaUnit = view.findViewById(R.id.spnAreaUnit);
-        rbSale = view.findViewById(R.id.rbSale);
-        rbRent = view.findViewById(R.id.rbRent);
-        iv_profilePic = view.findViewById(R.id.iv_profilePic);
-
-        etTitle = view.findViewById(R.id.etTitle);
-        etDescription = view.findViewById(R.id.etDescription);
-        etPhone = view.findViewById(R.id.etPhone);
-        etCity = view.findViewById(R.id.etCity);
-        etLocation = view.findViewById(R.id.etLocation);
-        etAddress = view.findViewById(R.id.etAddress);
-        etArea = view.findViewById(R.id.etArea);
-        etPrice = view.findViewById(R.id.etPrice);
-        btnAdd = view.findViewById(R.id.btnAdd);
+        etTitle = findViewById(R.id.etTitle);
+        etDescription = findViewById(R.id.etDescription);
+        etPhone = findViewById(R.id.etPhone);
+        etCity = findViewById(R.id.etCity);
+        etLocation = findViewById(R.id.etLocation);
+        etLocation.setVisibility(View.VISIBLE);
+        etAddress = findViewById(R.id.etAddress);
+        etArea = findViewById(R.id.etArea);
+        etPrice = findViewById(R.id.etPrice);
+        btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
+        btnAdd.setText("Edit");
         iv_profilePic.setOnClickListener(this);
 
 
         setUserFields();
         populateTypeSpinner();
         populateAreaUnitSpinner();
-
     }
 
     private void setUserFields() {
-        etPhone.setText(PreferenceManager.getInstance().getPhoneNo(getActivity()));
-
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        etTitle.setText(propertyModel.getTitle());
+        etDescription.setText(propertyModel.getDescription());
+        etPhone.setText(propertyModel.getPhoneOfSeller());
+        etCity.setText(propertyModel.getCity());
+        etAddress.setText(propertyModel.getAddress());
+        etArea.setText(propertyModel.getArea());
+        etPrice.setText(propertyModel.getPrice());
+        if (propertyModel.getImages() != null && propertyModel.getImages().size() > 0) {
+            ImageUtil.showPropertyImage(iv_profilePic, this, IAPIConstants.BASE_URL + propertyModel.getImages().get(0).getImagePath());
         }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (propertyModel.getCategory().equals("For Sale")) {
+            rbSale.setChecked(true);
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            rbRent.setChecked(true);
         }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     private void populateTypeSpinner() {
         List<String> type = Arrays.asList(getResources().getStringArray(R.array.type));
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, type);
+        int typeIndex = getTypeindex(type);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, type);
         spntype.setAdapter(typeAdapter);
         spntype.setOnItemSelectedListener(this);
+        spntype.setSelection(typeIndex);
+
+    }
+
+    private int getTypeindex(List<String> type) {
+        int index = 0;
+        for (String st : type) {
+            if (st.equals(propertyModel.getType()))
+                return index;
+            index++;
+        }
+        return 0;
+    }
+
+    private int getAreaUnitIndex(List<String> AreaUnit) {
+        int index = 0;
+        for (String st : AreaUnit) {
+            if (st.equals(propertyModel.getAreaUnit()))
+                return index;
+            index++;
+        }
+        return 0;
     }
 
     private void populateAreaUnitSpinner() {
         List<String> areaUnit = Arrays.asList(getResources().getStringArray(R.array.area_unit));
-        ArrayAdapter<String> areaUnitAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, areaUnit);
+        int areaUnitIndex = getAreaUnitIndex(areaUnit);
+        ArrayAdapter<String> areaUnitAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, areaUnit);
         spnAreaUnit.setAdapter(areaUnitAdapter);
         spnAreaUnit.setOnItemSelectedListener(this);
+        spnAreaUnit.setSelection(areaUnitIndex);
     }
 
     private void setCategory() {
@@ -221,11 +192,11 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
             return false;
         }
 
-        if (TextUtils.isEmpty(etLocation.getText().toString().trim())) {
-            etLocation.setError("Location is required");
-            etLocation.requestFocus();
-            return false;
-        }
+//        if (TextUtils.isEmpty(etLocation.getText().toString().trim())) {
+//            etLocation.setError("Location is required");
+//            etLocation.requestFocus();
+//            return false;
+//        }
         if (TextUtils.isEmpty(etAddress.getText().toString().trim())) {
             etAddress.setError("Address is required");
             etAddress.requestFocus();
@@ -237,8 +208,8 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
             return false;
         }
 
-        if (image == null) {
-            Toast.makeText(getActivity(), "Please select image", Toast.LENGTH_SHORT).show();
+        if (propertyModel.getImages() == null && image == null) {
+            Toast.makeText(this, "Please select image", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -270,20 +241,21 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
 
         switch (view.getId()) {
             case R.id.btnAdd:
-                AddProperty();
+                EditProperty();
                 break;
             case R.id.iv_profilePic:
-                PickImageDialog.build(new PickSetup()).show(getActivity()).setOnPickResult(this);
+                PickImageDialog.build(new PickSetup()).show(this).setOnPickResult(this);
                 break;
         }
     }
 
-    private void AddProperty() {
+    private void EditProperty() {
         if (validate()) {
             setCategory();
 
             PropertyModel model = new PropertyModel();
-            model.setUserId(Integer.valueOf(PreferenceManager.getInstance().getId(getActivity())));
+            model.setUserId(Integer.valueOf(PreferenceManager.getInstance().getId(this)));
+            model.setId(propertyModel.getId());
             model.setTitle(etTitle.getText().toString().trim());
             model.setDescription(etDescription.getText().toString().trim());
             model.setAddress(etAddress.getText().toString().trim());
@@ -299,77 +271,78 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
             model.setBathrooms("2");
             model.setKitchen("1");
             model.setYearBuild("2012");
-            callAddPropertyAPI(model);
+            callEditPropertyAPI(model);
 
         }
     }
 
-    private void callAddPropertyAPI(PropertyModel model) {
+    private void callEditPropertyAPI(PropertyModel model) {
         IPropertyAPIService iPropertyAPIService = ApiClient.getClient().create(IPropertyAPIService.class);
-        Call<PropertyResponseModel> call = iPropertyAPIService.addproperty(model);
-        ((HomeActivity) getActivity()).showLoading("Adding Property", "Please wait...");
+        Call<PropertyResponseModel> call = iPropertyAPIService.updateproperty(model);
+        showLoading("Updating Property", "Please wait...");
         call.enqueue(new Callback<PropertyResponseModel>() {
             @Override
             public void onResponse(Call<PropertyResponseModel> call, Response<PropertyResponseModel> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().getStats() == true && response.body().getData() != null) {
-                        uploadImage(image, response.body().getData().getId());
-//                        ((HomeActivity) getContext()).hideLoading();
+                        if (image != null)
+                            uploadImage(image, response.body().getData().getId());
+                        else {
+                            hideLoading();
+                            finish();
+                        }
 //                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                     } else if (response.body().getStats() == false) {
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        ((HomeActivity) getContext()).hideLoading();
+                        Toast.makeText(EditPropertyActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        hideLoading();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
-                    ((HomeActivity) getContext()).hideLoading();
+                    Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<PropertyResponseModel> call, Throwable t) {
-                Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
-                ((HomeActivity) getContext()).hideLoading();
+                Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                hideLoading();
 
             }
         });
 
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
 
     private void uploadImage(File file, int propertyId) {
         IPropertyAPIService iPropertyAPIService = ApiClient.getClient().create(IPropertyAPIService.class);
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         RequestBody propertyIdRequest = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(propertyId));
-        MultipartBody.Part body =  MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
         Call<PropertyResponseModel> call = iPropertyAPIService.uploadImage(body, propertyIdRequest);
         call.enqueue(new Callback<PropertyResponseModel>() {
             @Override
             public void onResponse(Call<PropertyResponseModel> call, Response<PropertyResponseModel> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().getStats() == true && response.body().getData() != null) {
-                        ((HomeActivity) getContext()).hideLoading();
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
+                        hideLoading();
+                        Toast.makeText(EditPropertyActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        finish();
 
                     } else if (response.body().getStats() == false) {
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        ((HomeActivity) getContext()).hideLoading();
+                        Toast.makeText(EditPropertyActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        hideLoading();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
-                    ((HomeActivity) getContext()).hideLoading();
+                    Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<PropertyResponseModel> call, Throwable t) {
-                Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
-                ((HomeActivity) getContext()).hideLoading();
+                Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                hideLoading();
 
             }
         });
@@ -383,7 +356,7 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
             iv_profilePic.setImageBitmap(pickResult.getBitmap());
 
         } else {
-            Toast.makeText(getActivity(), pickResult.getError().getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditPropertyActivity.this, pickResult.getError().getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

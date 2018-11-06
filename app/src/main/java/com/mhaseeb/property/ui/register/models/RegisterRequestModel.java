@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegisterRequestModel {
 
+    @SerializedName("id")
+    @Expose
+    private int id;
     @SerializedName("firstname")
     @Expose
     private String firstName;
@@ -41,6 +44,10 @@ public class RegisterRequestModel {
     }
 
     //Getters
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -70,6 +77,10 @@ public class RegisterRequestModel {
     }
 
     //Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

@@ -1,18 +1,20 @@
 <resources>
     <string name="app_name">Property App</string>
 
+    <string name="title_activity_property_detail">PropertyDetailActivity</string>
 
     <array name="type">
         <item>Select Type</item>
         <item>Apartments and Flats</item>
-        <item>Houses</item>
-        <item>Land and Plots</item>
+        <item>House</item>
+        <item>Land and Plot</item>
         <item>Portion and floors</item>
-        <item>Shops - Offices - Commercial Space</item>
+        <item>Shops - Office - Commercial Space</item>
     </array>
 
     <array name="quantity">
 
+        <item>Select</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -24,6 +26,7 @@
     </array>
     <array name="area_unit">
 
+        <item>Square Area Unit</item>
         <item>Square Feet</item>
         <item>Square Yards</item>
         <item>Square Meters</item>
@@ -63,6 +66,8 @@
     <string name="type">Type</string>
     <string name="area_unit">Area Unit</string>
     <string name="area">Area</string>
+    <string name="call">Call</string>
+    <string name="sms">Sms</string>
 
 
 </resources>

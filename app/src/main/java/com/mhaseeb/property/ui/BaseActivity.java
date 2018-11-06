@@ -1,7 +1,6 @@
 package com.mhaseeb.property.ui;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;

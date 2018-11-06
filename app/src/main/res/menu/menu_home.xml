@@ -13,6 +13,14 @@
             android:id="@+id/nav_add_property"
             android:checked="false"
             android:title="Add Property" />
+        <item
+            android:id="@+id/nav_my_adds"
+            android:checked="false"
+            android:title="My Ads" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:checked="false"
+            android:title="Favorites" />
 
         <item
             android:id="@+id/nav_logout"

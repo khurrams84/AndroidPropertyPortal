@@ -23,7 +23,7 @@ import retrofit2.http.Path;
 
 public interface ApiInterface {
 
-    @GET(AppConstants.URL_GET_METADATA)
+    /*@GET(AppConstants.URL_GET_METADATA)
     Call<MetaDataResponseModel> getMetaData();
 
     @POST(AppConstants.URL_ADD_PRODUCT)
@@ -41,7 +41,7 @@ public interface ApiInterface {
     @GET(AppConstants.URL_GET_PRICE)
     Call<APIResponseModel> getProductPrices(@Path("productName") String productName);
 
-    /*@POST(AppConstants.URL_REGISTER_VOLUNTEER)
+    @POST(AppConstants.URL_REGISTER_VOLUNTEER)
     Call<RegisterationResponseModel> registerVolunteer(@Body VolunteerRegistrationModel mrModel);
 
     @GET(AppConstants.URL_LOGIN)

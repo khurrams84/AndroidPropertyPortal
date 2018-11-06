@@ -2,6 +2,7 @@ package com.mhaseeb.property.ui.common.api;
 
 
 import com.mhaseeb.property.ui.common.config.AppConstants;
+import com.mhaseeb.property.ui.common.config.IAPIConstants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -103,7 +104,7 @@ public class ApiClient {
                     .connectTimeout(20000, TimeUnit.SECONDS)
                     .readTimeout(20000, TimeUnit.SECONDS).build();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(AppConstants.BASE_URL).client(client)
+                    .baseUrl(IAPIConstants.BASE_URL).client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

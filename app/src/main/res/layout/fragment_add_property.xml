@@ -9,14 +9,6 @@
     android:background="@color/background">
 
 
-    <Button
-        android:id="@+id/btnAdd"
-        style="@style/ButtonStyle1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/add" />
-
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -35,8 +27,9 @@
                 android:id="@+id/iv_profilePic"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerInside"
                 android:src="@drawable/house1"
                 android:visibility="visible" />
 
@@ -180,7 +173,7 @@
                     android:textColorHint="@color/font_color_title">
 
                     <EditText
-                        android:id="@+id/etPassword"
+                        android:id="@+id/etCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text" />
@@ -275,6 +268,15 @@
 
         </RelativeLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnAdd"
+        style="@style/ButtonStyle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/add" />
 
 </RelativeLayout>
 

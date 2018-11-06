@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/small_margin"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="@dimen/small_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:orientation="vertical">
+        <!--ImageModel and Price-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivMainImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/house1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/standard_margin">
+
+                <ImageView
+                    android:id="@+id/ivEdit"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_toLeftOf="@id/cbFavorites"
+                    android:layout_marginRight="@dimen/small_margin"
+                    android:src="@drawable/ic_edit"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/cbFavorites"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:button="@drawable/favorites_statelist"
+                    android:padding="@dimen/small_margin" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/standard_margin"
+                android:background="@color/translucent_white"
+                android:padding="@dimen/standard_margin">
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    style="@style/TextViewStyleAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$540,000" />
+            </LinearLayout>
+
+        </FrameLayout>
+        <!--Title and address-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="181 Sloane Street Goulburn"
+                android:textColor="@color/font_color_desc"
+                android:textSize="@dimen/ts_vbig_title"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvAddress"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:text="181 Sloane Street Goulburn NSW 2580 "
+                android:textColor="@color/font_color_title"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <!--Description-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvDescription"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                android:text="Description of Add"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <!--Type -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvType"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="House"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <!--Category-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvCategory"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="For Sale"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <!--Country-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Country: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvCountry"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pakistan"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <!--City-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvCity"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Karachi"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <!--Contact No-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact No: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvPhoneNo"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+923331234567"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnCall"
+                style="@style/ButtonStyle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin"
+                android:layout_weight="0.5"
+                android:padding="@dimen/small_margin"
+                android:text="@string/call" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnSms"
+                style="@style/ButtonStyle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin"
+                android:layout_weight="0.5"
+                android:padding="@dimen/small_margin"
+                android:text="@string/sms" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

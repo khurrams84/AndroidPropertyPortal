@@ -3,10 +3,10 @@ package com.mhaseeb.property.ui.common.config;
 public class AppConstants {
 
 
-    public static final String BASE_URL = "http://timetobuy.pk";
-    public static final String URL_GET_METADATA = "/API/index.php/getProductByGroup";
-    public static final String URL_ADD_PRODUCT = "/API/index.php/addProduct";
-    public static final String URL_GET_PRICE = "/API/index.php/getProductByName/{productName}";
+    public static final String TAG_FRAGMENT_ADD_PROPERTY = "addProperty";
+    public static final String TAG_FRAGMENT_PROPERTY_LISTING = "Home";
+    public static final String TAG_FRAGMENT_MY_ADS = "myAds";
+    public static final String TAG_FRAGMENT_FAVORITES = "favorites";
 
 
 }

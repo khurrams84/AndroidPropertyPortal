@@ -11,12 +11,17 @@ import com.mhaseeb.property.ui.common.config.AppConstants;
 
 public class PreferenceManager {
 
+    private PreferenceManager() {
+
+    }
+
     public static String PROPERTY_PREF = "propertyPrefs";
 
     private static PreferenceManager instance;
     private SharedPreferences sharedPref;
 
     //Constants
+    private static final String ID = "id";
     private static final String EMAIL = "email";
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
@@ -38,7 +43,7 @@ public class PreferenceManager {
 
     }
 
-    public void setUserSession(Context context, String firstName, String lastName, String email, String password, String phoneNo, String gender) {
+    public void setUserSession(Context context, String firstName, String lastName, String email, String phoneNo, String gender) {
 
         sharedPref = context.getSharedPreferences(PROPERTY_PREF, Context.MODE_PRIVATE);
 
@@ -46,11 +51,31 @@ public class PreferenceManager {
         editor.putString(FIRST_NAME, firstName);
         editor.putString(LAST_NAME, lastName);
         editor.putString(EMAIL, email);
-        editor.putString(PASSWORD, password);
         editor.putString(PHONE_NO, phoneNo);
         editor.putString(GENDER, gender);
         editor.commit();
     }
+
+    public void setId(Context context, String id) {
+
+        sharedPref = context.getSharedPreferences(PROPERTY_PREF, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(ID, id);
+        editor.commit();
+    }
+
+    public String getId(Context context) {
+        try {
+            sharedPref = context.getSharedPreferences(PROPERTY_PREF, Context.MODE_PRIVATE);
+            String id = sharedPref.getString(ID, "");
+            return id;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public void setEmail(Context context, String email) {
 
@@ -88,6 +113,17 @@ public class PreferenceManager {
             sharedPref = context.getSharedPreferences(PROPERTY_PREF, Context.MODE_PRIVATE);
             String lastName = sharedPref.getString(LAST_NAME, "");
             return lastName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getPhoneNo(Context context) {
+        try {
+            sharedPref = context.getSharedPreferences(PROPERTY_PREF, Context.MODE_PRIVATE);
+            String phoneNo = sharedPref.getString(PHONE_NO, "");
+            return phoneNo;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

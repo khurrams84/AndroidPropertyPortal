@@ -44,9 +44,10 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                                 response.body().getData().getFirstName(),
                                 response.body().getData().getLastName(),
                                 response.body().getData().getEmail(),
-                                model.getPassword(),
                                 response.body().getData().getGender(),
                                 model.getPhone());
+                        PreferenceManager.getInstance().setId(context, String.valueOf(response.body().getData().getId()));
+                        PreferenceManager.getInstance().setIsLoggedIn(context, true);
                         registerView.onRegisterSuccess(response.body().getMessage());
 
 //

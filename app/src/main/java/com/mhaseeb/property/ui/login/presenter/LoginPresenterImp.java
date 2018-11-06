@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.mhaseeb.property.ui.common.api.ApiClient;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
+import com.mhaseeb.property.ui.home.HomeActivity;
 import com.mhaseeb.property.ui.login.LoginActivity;
 import com.mhaseeb.property.ui.login.LoginContract;
 import com.mhaseeb.property.ui.login.api.ILoginAPIService;
@@ -43,13 +44,14 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                     if (response.body() != null && response.body().getStats() == true && response.body().getData() != null) {
 
                         ((LoginActivity) context).hideLoading();
+                        PreferenceManager.getInstance().disposeAll(context);
                         PreferenceManager.getInstance().setUserSession(context,
                                 response.body().getData().getFirstName(),
                                 response.body().getData().getLastName(),
                                 response.body().getData().getEmail(),
-                                model.getPassword(),
                                 response.body().getData().getPhone(),
                                 response.body().getData().getGender());
+                        PreferenceManager.getInstance().setId(context, String.valueOf(response.body().getData().getId()));
                         PreferenceManager.getInstance().setIsLoggedIn(context, true);
                         loginView.onLoginSuccess(response.body().getMessage());
                     } else if (response.body().getStats() == false) {

@@ -12,7 +12,7 @@ public class Datum implements Serializable {
     private Integer id;
     @SerializedName("status")
     @Expose
-    private Integer status;
+    private Boolean status;
     @SerializedName("property")
     @Expose
     private PropertyModel property;
@@ -25,11 +25,11 @@ public class Datum implements Serializable {
         this.id = id;
     }
 
-    public Integer getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

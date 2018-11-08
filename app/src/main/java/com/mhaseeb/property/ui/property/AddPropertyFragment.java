@@ -137,6 +137,7 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
         populateTypeSpinner();
         populateAreaUnitSpinner();
 
+        ((HomeActivity)getActivity()).hideSearchView();
     }
 
     private void setUserFields() {

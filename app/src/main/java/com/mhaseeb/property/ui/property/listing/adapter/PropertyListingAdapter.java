@@ -67,7 +67,13 @@ public class PropertyListingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((ViewHolder) holder).tvDescription.setText(model.getAddress());
             ((ViewHolder) holder).tvType.setText(model.getType());
             ((ViewHolder) holder).tvCategory.setText(model.getCategory());
-            ((ViewHolder) holder).cbFavorites.setChecked(model.isFavourite());
+
+            ((ViewHolder) holder).cbFavorites.setOnCheckedChangeListener(null);
+            if (model.isFavourite()) {
+                ((ViewHolder) holder).cbFavorites.setChecked(true);
+            } else {
+                ((ViewHolder) holder).cbFavorites.setChecked(false);
+            }
 
             if (model.getImages() != null && model.getImages().size() > 0) {
                 ImageUtil.showPropertyImage(((ViewHolder) holder).ivMainImage, mContext, IAPIConstants.BASE_URL + model.getImages().get(0).getImagePath());
@@ -79,6 +85,8 @@ public class PropertyListingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     mListener.onFragmentInteraction(model);
                 }
             });
+
+
             ((ViewHolder) holder).cbFavorites.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -100,6 +108,15 @@ public class PropertyListingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
     @Override
     public int getItemCount() {

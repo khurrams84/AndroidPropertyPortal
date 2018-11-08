@@ -102,6 +102,7 @@ public class UsersPropertyListingFragment extends Fragment {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvPropertyListing.getContext(), layoutManager.getOrientation());
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.divider_recyclerview));
+        ((HomeActivity)getActivity()).hideSearchView();
 //        rvPropertyListing.addItemDecoration(dividerItemDecoration);
 
 

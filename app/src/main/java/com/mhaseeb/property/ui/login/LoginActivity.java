@@ -120,7 +120,5 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onLoginFailure() {
 //        Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show();
-
-
     }
 }

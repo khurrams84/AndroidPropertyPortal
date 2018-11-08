@@ -7,9 +7,13 @@ import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +25,7 @@ import com.mhaseeb.property.ui.common.config.AppConstants;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
 import com.mhaseeb.property.ui.login.LoginActivity;
 import com.mhaseeb.property.ui.property.AddPropertyFragment;
+import com.mhaseeb.property.ui.property.OnSearchTextListener;
 import com.mhaseeb.property.ui.property.favorites.FavoritesPropertyFragment;
 import com.mhaseeb.property.ui.property.PropertyDetailActivity;
 import com.mhaseeb.property.ui.property.listing.PropertyListingFragment;
@@ -32,7 +37,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         PropertyListingFragment.OnFragmentInteractionListener,
         AddPropertyFragment.OnFragmentInteractionListener,
         FavoritesPropertyFragment.OnFragmentInteractionListener,
-        UsersPropertyListingFragment.OnFragmentInteractionListener {
+        UsersPropertyListingFragment.OnFragmentInteractionListener,
+        SearchView.OnQueryTextListener,
+        SearchView.OnCloseListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -42,6 +49,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     private TextView tvHeaderUsername, tvHeaderEmail;
     private Fragment selectedFragment;
+    OnSearchTextListener onSearchTextListener;
+
+    public SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,12 +143,27 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_home, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.search);
+        searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        searchView.setOnCloseListener(this);
+        return true;
+    }
+
+    public void showSearchView() {
+        if (searchView != null)
+            searchView.setVisibility(View.VISIBLE);
+
+    }
+
+    public void hideSearchView() {
+        if (searchView != null)
+            searchView.setVisibility(View.INVISIBLE);
+    }
 //
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
@@ -231,5 +256,29 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         Intent i = new Intent(HomeActivity.this, PropertyDetailActivity.class);
         i.putExtra("property", property);
         startActivity(i);
+    }
+
+    public void setSearchOnTextListener(OnSearchTextListener listener) {
+        onSearchTextListener = listener;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        onSearchTextListener.onTextSubmit(query);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (newText.length() == 0) {
+            onSearchTextListener.onTextSubmit("");
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onClose() {
+        //onSearchTextListener.onTextSubmit("");
+        return false;
     }
 }

@@ -6,6 +6,7 @@ import com.mhaseeb.property.ui.common.model.APIResponseModel;
 import com.mhaseeb.property.ui.property.model.FavoritesModel;
 import com.mhaseeb.property.ui.property.model.FavoritesResponseModel;
 import com.mhaseeb.property.ui.property.model.GetUserPropertiesResponseModel;
+import com.mhaseeb.property.ui.property.model.MarkFavouriteResponse;
 import com.mhaseeb.property.ui.property.model.PropertyModel;
 import com.mhaseeb.property.ui.property.model.PropertyResponseModel;
 import com.mhaseeb.property.ui.register.models.RegisterRequestModel;
@@ -51,14 +52,14 @@ public interface IPropertyAPIService {
     @GET(IAPIConstants.URL_GET_USER_PROPERTIES)
     Call<GetUserPropertiesResponseModel> getUserProperties(@Query("userId") int userId);
 
-    @GET(IAPIConstants.URL_GET_ALL_PROPERTIES)
-    Call<GetUserPropertiesResponseModel> getAllProperties();
+    @GET(IAPIConstants.URL_SEARCH)
+    Call<GetUserPropertiesResponseModel> getAllProperties(@Query("query") String query);
 
-    @GET(IAPIConstants.URL_GET_ALL_PROPERTIES)
-    Call<GetUserPropertiesResponseModel> getAllUserProperties(@Query("userId") int userId);
+    @GET(IAPIConstants.URL_SEARCH)
+    Call<GetUserPropertiesResponseModel> getAllUserProperties(@Query("userId") int userId, @Query("query") String query);
 
     @PUT(IAPIConstants.URL_MARK_FAVORITE)
-    Call<FavoritesResponseModel> markFavoriteProperty(@Body FavoritesModel model);
+    Call<MarkFavouriteResponse> markFavoriteProperty(@Body FavoritesModel model);
 
     @GET(IAPIConstants.URL_GET_FAVORITE_PROPERTY)
     Call<FavoritesResponseModel> getFavoriteProperties(@Query("userId") int userId);

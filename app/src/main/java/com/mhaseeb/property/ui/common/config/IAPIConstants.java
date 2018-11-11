@@ -15,6 +15,8 @@ public interface IAPIConstants {
     String URL_UPLOAD_PROPERTY_IMAGE = "property/image";
     String URL_SEARCH = "property/search";
 
+    String DATABASE_NAME = "property_app";
+
 //    public static final String URL_GET_PROPERTY_IMAGE = BASE_URL + "property_images/";
 
 

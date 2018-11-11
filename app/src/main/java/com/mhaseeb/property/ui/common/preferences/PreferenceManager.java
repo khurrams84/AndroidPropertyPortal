@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.mhaseeb.property.ui.common.config.AppConstants;
+import com.mhaseeb.property.ui.common.service.ApplicationContext;
+import com.mhaseeb.property.ui.common.service.ServiceLocator;
 
 /**
  * Created by Mohammad.Haseeb on 9/7/2018
@@ -174,9 +176,9 @@ public class PreferenceManager {
         editor.commit();
     }
 
-    public boolean getIsLoggedIn(Context context) {
+    public boolean getIsLoggedIn() {
         try {
-            sharedPref = context.getSharedPreferences(PROPERTY_PREF, Context.MODE_PRIVATE);
+            sharedPref = ServiceLocator.getService(ApplicationContext.class).getContext().getSharedPreferences(PROPERTY_PREF, ServiceLocator.getService(ApplicationContext.class).getContext().MODE_PRIVATE);
             boolean isLoggedIn = sharedPref.getBoolean(IS_LOGGED_IN, false);
             return isLoggedIn;
         } catch (Exception e) {

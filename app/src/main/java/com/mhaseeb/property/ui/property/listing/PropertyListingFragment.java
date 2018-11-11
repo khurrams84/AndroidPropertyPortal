@@ -1,9 +1,10 @@
 package com.mhaseeb.property.ui.property.listing;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
@@ -17,17 +18,19 @@ import android.widget.Toast;
 
 import com.mhaseeb.property.R;
 import com.mhaseeb.property.ui.common.api.ApiClient;
+import com.mhaseeb.property.ui.common.persistence.AppDatabase;
+import com.mhaseeb.property.ui.common.persistence.FavouriteEntity;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
+import com.mhaseeb.property.ui.common.service.ServiceLocator;
 import com.mhaseeb.property.ui.home.HomeActivity;
 import com.mhaseeb.property.ui.property.OnSearchTextListener;
 import com.mhaseeb.property.ui.property.api.IPropertyAPIService;
 import com.mhaseeb.property.ui.property.listing.adapter.PropertyListingAdapter;
 import com.mhaseeb.property.ui.property.model.FavoritesModel;
-import com.mhaseeb.property.ui.property.model.FavoritesResponseModel;
 import com.mhaseeb.property.ui.property.model.GetUserPropertiesResponseModel;
 import com.mhaseeb.property.ui.property.model.MarkFavouriteResponse;
 import com.mhaseeb.property.ui.property.model.PropertyModel;
-import com.mhaseeb.property.ui.property.model.PropertyResponseModel;
+import com.mhaseeb.property.ui.widget.FavouriteAppWidget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +103,7 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rvPropertyListing.setLayoutManager(layoutManager);
 
-        ((HomeActivity)getActivity()).setSearchOnTextListener(this);
+        ((HomeActivity) getActivity()).setSearchOnTextListener(this);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvPropertyListing.getContext(), layoutManager.getOrientation());
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.divider_recyclerview));
@@ -108,7 +111,7 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
 
 
 //        setAdapter();
-        ((HomeActivity)getActivity()).showSearchView();
+        ((HomeActivity) getActivity()).showSearchView();
         callGetPropertyAPI("");
 
     }
@@ -116,7 +119,7 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
     private void callGetPropertyAPI(String query) {
         IPropertyAPIService iPropertyAPIService = ApiClient.getClient().create(IPropertyAPIService.class);
         Call<GetUserPropertiesResponseModel> call;
-        if (PreferenceManager.getInstance().getIsLoggedIn(getContext()))
+        if (PreferenceManager.getInstance().getIsLoggedIn())
             call = iPropertyAPIService.getAllUserProperties(Integer.valueOf(PreferenceManager.getInstance().getId(getContext())), query);
         else
             call = iPropertyAPIService.getAllProperties(query);
@@ -157,9 +160,34 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
 //        ((HomeActivity) getActivity()).showLoading("Getting Properties", "Please wait...");
         call.enqueue(new Callback<MarkFavouriteResponse>() {
             @Override
-            public void onResponse(Call<MarkFavouriteResponse> call, Response<MarkFavouriteResponse> response) {
+            public void onResponse(Call<MarkFavouriteResponse> call, final Response<MarkFavouriteResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().getStatus() == true && response.body().getData() != null) {
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                PropertyModel propertyModel = response.body().getData().getProperty();
+
+                                Intent intent = new Intent(getActivity(), FavouriteAppWidget.class);
+                                intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+                                int ids[] = AppWidgetManager.getInstance(getActivity()).getAppWidgetIds(new ComponentName(getActivity(), FavouriteAppWidget.class));
+                                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+                                getActivity().sendBroadcast(intent);
+
+                                //if property is marked favourite
+                                if (response.body().getData().getStatus()) {
+                                    FavouriteEntity favouriteEntity = new FavouriteEntity(propertyModel);
+                                    ServiceLocator.getService(AppDatabase.class).FavouriteDao().deleteByPropertyId(propertyModel.getId());
+                                    ServiceLocator.getService(AppDatabase.class).FavouriteDao().insertOnlySingleFavourite(favouriteEntity);
+                                } else {
+                                    ServiceLocator.getService(AppDatabase.class).FavouriteDao().deleteByPropertyId(propertyModel.getId());
+                                }
+
+                            }
+                        }).start();
+
 //                        ((HomeActivity) getContext()).hideLoading();
 
                     } else if (response.body().getStatus() == false) {

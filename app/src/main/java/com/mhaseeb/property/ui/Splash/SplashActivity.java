@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent mainIntent;
-                if (PreferenceManager.getInstance().getIsLoggedIn(SplashActivity.this)) {
+                if (PreferenceManager.getInstance().getIsLoggedIn()) {
                     mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
                 } else {
                     mainIntent = new Intent(SplashActivity.this, LoginActivity.class);

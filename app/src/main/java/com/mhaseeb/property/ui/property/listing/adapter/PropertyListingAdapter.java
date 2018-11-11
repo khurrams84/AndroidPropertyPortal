@@ -91,7 +91,7 @@ public class PropertyListingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                    if (PreferenceManager.getInstance().getIsLoggedIn(mContext)) {
+                    if (PreferenceManager.getInstance().getIsLoggedIn()) {
                         model.setFavourite(b);
 //                        updatePrices(propertyListing);
                         FavoritesModel favoritesModel = new FavoritesModel();

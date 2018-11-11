@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.mhaseeb.property.R;
 import com.mhaseeb.property.ui.common.api.ApiClient;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
+import com.mhaseeb.property.ui.common.utils.ImageCompression;
 import com.mhaseeb.property.ui.home.HomeActivity;
 import com.mhaseeb.property.ui.property.api.IPropertyAPIService;
 import com.mhaseeb.property.ui.property.model.PropertyModel;
@@ -354,8 +355,9 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().getStats() == true && response.body().getData() != null) {
                         ((HomeActivity) getContext()).hideLoading();
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
+//                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Property Added Successfully", Toast.LENGTH_SHORT).show();
+                        getActivity().onBackPressed();
 
                     } else if (response.body().getStats() == false) {
                         Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -380,7 +382,14 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
     public void onPickResult(PickResult pickResult) {
         if (pickResult.getError() == null) {
 
-            image = new File(pickResult.getPath());
+            ImageCompression imageCompression = new ImageCompression(getActivity());
+
+            String path = pickResult.getPath();
+
+            imageCompression.execute(path);
+
+            image = new File(path);
+
             iv_profilePic.setImageBitmap(pickResult.getBitmap());
 
         } else {

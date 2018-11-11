@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/propertyNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="No Favorites found"
+        android:textSize="@dimen/ts_big"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/propertyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/standard_margin"
+
+        android:orientation="vertical"
+        android:visibility="visible">
+        <!--ImageModel and Price-->
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivMainImage"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/house1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/standard_margin"
+                android:background="@color/translucent_white"
+                android:padding="@dimen/standard_margin">
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    style="@style/TextViewStyleAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$540,000" />
+            </LinearLayout>
+
+        </FrameLayout>
+        <!--Title and address-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="181 Sloane Street Goulburn"
+                android:textColor="@color/font_color_desc"
+                android:textSize="@dimen/ts_vbig_title"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvDescription"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:text="181 Sloane Street Goulburn NSW 2580 "
+                android:textColor="@color/font_color_title"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <!--Type -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/tvType"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="House"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <!--Category-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/standard_margin"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: "
+                android:textColor="@color/font_color_title"
+                android:textSize="@dimen/ts_standard"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="For Sale"
+                android:textColor="@color/font_color_desc"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+

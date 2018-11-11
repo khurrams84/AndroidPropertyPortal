@@ -68,6 +68,8 @@
     <string name="area">Area</string>
     <string name="call">Call</string>
     <string name="sms">Sms</string>
+    <string name="appwidget_text">Favourite Widget</string>
+    <string name="add_widget">Add widget</string>
 
 
 </resources>

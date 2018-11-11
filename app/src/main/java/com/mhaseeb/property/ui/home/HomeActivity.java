@@ -22,7 +22,11 @@ import android.widget.Toast;
 import com.mhaseeb.property.R;
 import com.mhaseeb.property.ui.BaseActivity;
 import com.mhaseeb.property.ui.common.config.AppConstants;
+import com.mhaseeb.property.ui.common.persistence.AppDatabase;
+import com.mhaseeb.property.ui.common.persistence.FavouriteDao;
+import com.mhaseeb.property.ui.common.persistence.FavouriteEntity;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
+import com.mhaseeb.property.ui.common.service.ServiceLocator;
 import com.mhaseeb.property.ui.login.LoginActivity;
 import com.mhaseeb.property.ui.property.AddPropertyFragment;
 import com.mhaseeb.property.ui.property.OnSearchTextListener;
@@ -60,6 +64,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         setDrawer();
         initUI();
         setListingFragment();
+
     }
 
     private void setListingFragment() {

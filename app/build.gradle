@@ -35,8 +35,7 @@ dependencies {
 
     //Facebook SDk
 //    implementation 'com.facebook.android:facebook-login:[4,5)'
-
-
+    
     implementation 'com.android.support:support-v4:27.1.1'
 
     //glide
@@ -50,6 +49,12 @@ dependencies {
     //Room
     implementation 'android.arch.persistence.room:runtime:1.0.0'
     annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
+
+    //AdMobs
+    implementation 'com.google.android.gms:play-services-ads:17.1.0'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:16.0.4'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

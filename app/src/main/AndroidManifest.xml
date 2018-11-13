@@ -60,6 +60,11 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/favourite_app_widget_info" />
         </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6192650315923114~4763347760"/>
+
     </application>
 
 </manifest>

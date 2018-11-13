@@ -16,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.mhaseeb.property.R;
 import com.mhaseeb.property.ui.common.api.ApiClient;
 import com.mhaseeb.property.ui.common.persistence.AppDatabase;
@@ -54,6 +57,7 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
 
     private RecyclerView rvPropertyListing;
     private List<PropertyModel> propertyListing;
+    private AdView adView;
 
     public PropertyListingFragment() {
         // Required empty public constructor
@@ -113,6 +117,9 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
 //        setAdapter();
         ((HomeActivity) getActivity()).showSearchView();
         callGetPropertyAPI("");
+        adView =  view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
     }
 

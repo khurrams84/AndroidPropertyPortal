@@ -14,6 +14,7 @@ public interface IAPIConstants {
     String URL_GET_FAVORITE_PROPERTY = "user/property/favourite?";
     String URL_UPLOAD_PROPERTY_IMAGE = "property/image";
     String URL_SEARCH = "property/search";
+    String AD_MOB_ID = "ca-app-pub-6192650315923114~4763347760";
 
     String DATABASE_NAME = "property_app";
 

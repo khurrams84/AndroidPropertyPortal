@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "535421389958",
+    "firebase_url": "https://property-portal-a62ba.firebaseio.com",
+    "project_id": "property-portal-a62ba",
+    "storage_bucket": "property-portal-a62ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535421389958:android:a12d52fd85904fdd",
+        "android_client_info": {
+          "package_name": "com.mhaseeb.property"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535421389958-u0d6sjog0aipn1ps6k79eg1hpppr75ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_nxeeq1YhXVIno3SsoMMz_pR1z8L90bY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

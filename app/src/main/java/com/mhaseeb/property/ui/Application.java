@@ -2,6 +2,8 @@ package com.mhaseeb.property.ui;
 
 import android.arch.persistence.room.Room;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.mhaseeb.property.ui.common.config.IAPIConstants;
 import com.mhaseeb.property.ui.common.persistence.AppDatabase;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
@@ -14,6 +16,8 @@ import com.mhaseeb.property.ui.common.service.ServiceLocator;
 
 public class Application extends android.app.Application {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -24,6 +28,10 @@ public class Application extends android.app.Application {
 
         ServiceLocator.initServiceLocator(getApplicationContext());
         ServiceLocator.cache.put(AppDatabase.class.getName(), db);
+
+        MobileAds.initialize(this, IAPIConstants.AD_MOB_ID);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
     }
 }

@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'key0'
             keyPassword 'Eshan1@'
-            storeFile file('C:/Khurram/Udacity/Android-Developer-NanoDegree/AndroidPropertyPortal/keystore.jks')
+            storeFile file("keystore.jks")
             storePassword 'Eshan1@'
         }
     }
@@ -17,11 +17,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
             signingConfig signingConfigs.config
         }
     }
@@ -51,6 +55,8 @@ dependencies {
     //Room
     implementation 'android.arch.persistence.room:runtime:1.0.0'
     annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
     //AdMobs
     implementation 'com.google.android.gms:play-services-ads:17.1.0'
     //firebase

@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/standard_margin"
                     android:gravity="center"
-                    android:text="Not a member? Sign Up"
+                    android:text="@string/not_a_member_sign_up"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/ts_standard"
                     android:visibility="visible" />

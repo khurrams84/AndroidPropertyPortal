@@ -62,7 +62,7 @@
                     style="@style/TextViewStyleAlert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$540,000" />
+                     />
             </LinearLayout>
 
         </FrameLayout>
@@ -80,7 +80,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="181 Sloane Street Goulburn"
+                android:text="@string/title"
                 android:textColor="@color/font_color_desc"
                 android:textSize="@dimen/ts_vbig_title"
                 android:textStyle="normal" />
@@ -94,7 +94,6 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:scrollHorizontally="true"
-                android:text="181 Sloane Street Goulburn NSW 2580 "
                 android:textColor="@color/font_color_title"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -111,7 +110,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description: "
+                android:text="@string/description"
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -123,7 +122,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="5"
-                android:text="Description of Add"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -141,7 +139,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type: "
+                android:text="@string/type"
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -152,7 +150,6 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="House"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -169,7 +166,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Category: "
+                android:text="@string/category"
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -180,7 +177,6 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="For Sale"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -197,7 +193,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Country: "
+                android:text="@string/country"
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -208,7 +204,6 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pakistan"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -225,7 +220,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="City: "
+                android:text="@string/city"
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -236,7 +231,6 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Karachi"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -254,7 +248,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact No: "
+                android:text="@string/contactno"
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -265,7 +259,6 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+923331234567"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>

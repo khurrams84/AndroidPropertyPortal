@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".login.LoginActivity">
 
 
     <LinearLayout
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/standard_margin"
                     android:gravity="center"
-                    android:text="@string/not_a_member_sign_up"
+                    android:text="Not a member? Sign Up"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/ts_standard"
                     android:visibility="visible" />

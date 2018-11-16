@@ -15,16 +15,16 @@
         android:roundIcon="@drawable/home"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".ui.Application">
+        android:name=".Application">
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".login.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".home.HomeActivity" />
         <activity
-            android:name=".ui.register.RegisterActivity"
+            android:name=".register.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.Splash.SplashActivity"
+            android:name=".Splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.property.PropertyDetailActivity"
+            android:name=".property.PropertyDetailActivity"
             android:label="@string/title_activity_property_detail"
             android:theme="@style/AppTheme" />
 
@@ -48,9 +48,9 @@
                 android:resource="@xml/picker_provider_paths" />
         </provider>
 
-        <activity android:name=".ui.property.EditPropertyActivity" />
+        <activity android:name=".property.EditPropertyActivity" />
 
-        <receiver android:name=".ui.widget.FavouriteAppWidget"
+        <receiver android:name=".widget.FavouriteAppWidget"
             >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

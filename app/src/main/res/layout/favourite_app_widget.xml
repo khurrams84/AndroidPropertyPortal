@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/widget_no_favorite_found"
+        android:text="No Favorites found"
         android:textSize="@dimen/ts_big"
         android:visibility="gone" />
 
@@ -47,7 +47,7 @@
                     style="@style/TextViewStyleAlert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/widget_price" />
+                    android:text="$540,000" />
             </LinearLayout>
 
         </FrameLayout>
@@ -65,6 +65,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="181 Sloane Street Goulburn"
                 android:textColor="@color/font_color_desc"
                 android:textSize="@dimen/ts_vbig_title"
                 android:textStyle="normal" />
@@ -78,7 +79,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:scrollHorizontally="true"
-                android:text="@string/widget_description"
+                android:text="181 Sloane Street Goulburn NSW 2580 "
                 android:textColor="@color/font_color_title"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -95,7 +96,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/widget_type"
+                android:text="Type: "
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -106,6 +107,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="House"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -123,7 +125,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/widget_category"
+                android:text="Category: "
                 android:textColor="@color/font_color_title"
                 android:textSize="@dimen/ts_standard"
                 android:textStyle="normal" />
@@ -133,6 +135,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="For Sale"
                 android:textColor="@color/font_color_desc"
                 android:textStyle="normal" />
         </LinearLayout>

@@ -7,25 +7,28 @@
         <item
             android:id="@+id/nav_home"
             android:checked="false"
-            android:title="Home" />
-
+            android:title="@string/nav_home" />
+        android:title="@string/nav_home" />
         <item
             android:id="@+id/nav_add_property"
             android:checked="false"
-            android:title="Add Property" />
+            android:title="@string/nav_add_property" />
+        android:title="@string/nav_add_property" />
         <item
             android:id="@+id/nav_my_adds"
             android:checked="false"
-            android:title="My Ads" />
+            android:title="@string/nav_my_ads" />
+        android:title="@string/nav_my_ads" />
         <item
             android:id="@+id/nav_favorites"
             android:checked="false"
-            android:title="Favorites" />
-
+            android:title="@string/nav_favorites" />
+        android:title="@string/nav_favorites" />
         <item
             android:id="@+id/nav_logout"
             android:checked="false"
-            android:title="Logout" />
+            android:title="@string/nav_logout" />
+        android:title="@string/nav_logout" />
         <!--<item-->
         <!--android:id="@+id/nav_item_rate_us"-->
         <!--android:checked="true"-->

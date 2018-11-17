@@ -166,7 +166,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/small_margin"
-                        android:text="Gender"
+                        android:text="@string/gender"
                         android:textSize="@dimen/ts_standard" />
 
                     <RadioGroup
@@ -184,7 +184,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="@dimen/standard_margin"
-                            android:text="Male"
+                            android:text="@string/Male"
                             android:checked="true"
                             android:textSize="@dimen/ts_standard" />
 
@@ -194,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="@dimen/standard_margin"
-                            android:text="Female"
+                            android:text="@string/Female"
                             android:textSize="@dimen/ts_standard" />
 
                     </RadioGroup>

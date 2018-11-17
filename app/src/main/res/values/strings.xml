@@ -59,6 +59,8 @@
     <string name="city">City</string>
     <string name="address">Address</string>
     <string name="category">Category</string>
+    <string name="country">Country</string>
+    <string name="contactno">Contact No:</string>
     <string name="add">Add</string>
     <string name="for_sale">For Sale</string>
     <string name="for_rent">For Rent</string>
@@ -70,6 +72,24 @@
     <string name="sms">Sms</string>
     <string name="appwidget_text">Favourite Widget</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="no_adds_to_show">No adds to show</string>
+    <string name="not_a_member_sign_up">Not a member? Sign Up</string>
+    <string name="widget_no_favorite_found">No Favorites found</string>
+    <string name="widget_price">$540,000</string>
+    <string name="widget_description">181 Sloane Street Goulburn NSW 2580</string>
+    <string name="widget_type">Type</string>
+    <string name="widget_category">Category:</string>
+    <string name="Splash">Splash</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_add_property">Add Property</string>
+    <string name="nav_my_ads">My Ads</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_logout">Logout</string>
+    <string name="search">Search</string>
+    <string name="gender">Gender</string>
 
 
 </resources>

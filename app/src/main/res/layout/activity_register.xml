@@ -40,7 +40,8 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/home"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:contentDescription="@string/cd_profile_pic"/>
 
             <LinearLayout
                 android:id="@+id/rlll"

@@ -22,7 +22,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/house1" />
+                android:src="@drawable/house1"
+                android:contentDescription="@string/cd_property_image"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -37,7 +38,8 @@
                     android:layout_toLeftOf="@id/cbFavorites"
                     android:layout_marginRight="@dimen/small_margin"
                     android:src="@drawable/ic_edit"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    android:contentDescription="@string/cd_edit_property_image" />
 
                 <CheckBox
                     android:id="@+id/cbFavorites"

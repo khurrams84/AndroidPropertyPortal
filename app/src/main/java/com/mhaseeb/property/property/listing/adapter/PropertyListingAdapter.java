@@ -58,7 +58,7 @@ public class PropertyListingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         //Here you can fill your row view
         if (holder instanceof PropertyListingAdapter.ViewHolder) {
             final PropertyModel model = getItem(position);
-            ((ViewHolder) holder).tvPrice.setText("$" + model.getPrice());
+            ((ViewHolder) holder).tvPrice.setText(R.string.code_dollar + model.getPrice());
             ((ViewHolder) holder).tvTitle.setText(model.getTitle());
             ((ViewHolder) holder).tvDescription.setText(model.getAddress());
             ((ViewHolder) holder).tvType.setText(model.getType());

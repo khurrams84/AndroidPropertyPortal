@@ -31,7 +31,8 @@
                 android:layout_alignParentTop="true"
                 android:scaleType="centerInside"
                 android:src="@drawable/house1"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:contentDescription="@string/cd_profile_pic"/>
 
             <LinearLayout
                 android:id="@+id/rlll"

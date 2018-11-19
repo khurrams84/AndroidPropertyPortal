@@ -86,7 +86,7 @@ public class EditPropertyActivity extends BaseActivity implements AdapterView.On
         etPrice = findViewById(R.id.etPrice);
         btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
-        btnAdd.setText("Edit");
+        btnAdd.setText(R.string.code_edit);
         iv_profilePic.setOnClickListener(this);
 
 

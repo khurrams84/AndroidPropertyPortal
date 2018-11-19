@@ -65,7 +65,7 @@ public class PropertyDetailActivity extends BaseActivity implements View.OnClick
         if (isEditable)
             ivEdit.setVisibility(View.VISIBLE);
 
-        tvPrice.setText("$" + propertyModel.getPrice());
+        tvPrice.setText(R.string.code_dollar + propertyModel.getPrice());
         tvTitle.setText(propertyModel.getTitle());
         tvAddress.setText(propertyModel.getAddress());
         tvDescription.setText(propertyModel.getDescription());

@@ -91,5 +91,15 @@
     <string name="search">Search</string>
     <string name="gender">Gender</string>
 
+    <string name="cd_login">Login Screen Image</string>
+    <string name="cd_profile_pic">this is a profile pic of user</string>
+    <string name="cd_splash">This is a splash screen</string>
+    <string name="cd_property_image">This is selected property image</string>
+    <string name="cd_edit_property_image">This is selected property imagef or edit</string>
+    <string name="cd_home">GO Home</string>
+
+    <string name="code_edit">Edit</string>
+    <string name="code_dollar">$</string>
+
 
 </resources>

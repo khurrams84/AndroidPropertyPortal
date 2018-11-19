@@ -30,7 +30,8 @@
                     android:layout_height="130dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/standard_margin"
-                    android:src="@drawable/home" />
+                    android:src="@drawable/home"
+                    android:contentDescription="@string/cd_login"/>
 
                 <!-- Email Label -->
                 <android.support.design.widget.TextInputLayout

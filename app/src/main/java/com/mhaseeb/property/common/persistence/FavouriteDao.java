@@ -24,6 +24,9 @@ public interface FavouriteDao {
     @Query("SELECT * FROM favourite WHERE id = :id")
     FavouriteEntity fetchOneFavouritebyId (int id);
 
+    @Query("SELECT * FROM favourite")
+    List<FavouriteEntity> fetchAll();
+
     @Query("SELECT * from favourite ORDER BY id DESC LIMIT 1")
     FavouriteEntity fetchLastRecord();
 

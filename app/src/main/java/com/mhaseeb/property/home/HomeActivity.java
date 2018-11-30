@@ -1,5 +1,8 @@
 package com.mhaseeb.property.home;
 
+import android.app.Activity;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,19 +21,24 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mhaseeb.property.R;
 import com.mhaseeb.property.BaseActivity;
+import com.mhaseeb.property.R;
 import com.mhaseeb.property.common.config.AppConstants;
+import com.mhaseeb.property.common.config.IAPIConstants;
+import com.mhaseeb.property.common.persistence.AppDatabase;
 import com.mhaseeb.property.common.preferences.PreferenceManager;
+import com.mhaseeb.property.common.service.ServiceLocator;
 import com.mhaseeb.property.login.LoginActivity;
-import com.mhaseeb.property.property.AddPropertyFragment;
 import com.mhaseeb.property.property.OnSearchTextListener;
+import com.mhaseeb.property.property.addproperty.AddPropertyActivity;
+import com.mhaseeb.property.property.addproperty.AddPropertyFragment;
 import com.mhaseeb.property.property.favorites.FavoritesPropertyFragment;
-import com.mhaseeb.property.property.PropertyDetailActivity;
-import com.mhaseeb.property.userproperty.PropertyListingFragment;
-import com.mhaseeb.property.userproperty.UsersPropertyListingFragment;
+import com.mhaseeb.property.property.home.PropertyListingFragment;
 import com.mhaseeb.property.property.model.Datum;
 import com.mhaseeb.property.property.model.PropertyModel;
+import com.mhaseeb.property.property.propertydetail.PropertyDetailActivity;
+import com.mhaseeb.property.property.userproperty.UsersPropertyListingFragment;
+import com.mhaseeb.property.widget.FavouriteAppWidget;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
         PropertyListingFragment.OnFragmentInteractionListener,
@@ -45,6 +53,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     private boolean doubleBackToExitPressedOnce = false;
+    private int PROPERTY_UPDATE = 1001;
 
     private TextView tvHeaderUsername, tvHeaderEmail;
     private Fragment selectedFragment;
@@ -191,9 +200,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 setListingFragment();
                 break;
             case R.id.nav_add_property:
-                if (!PreferenceManager.getInstance().getIsGuestLoggedIn(this))
-                    launchFragment(new AddPropertyFragment(), AppConstants.TAG_FRAGMENT_ADD_PROPERTY);
-                else
+                if (!PreferenceManager.getInstance().getIsGuestLoggedIn(this)) {
+//                    launchFragment(new AddPropertyFragment(), AppConstants.TAG_FRAGMENT_ADD_PROPERTY);
+                    Intent i = new Intent(HomeActivity.this, AddPropertyActivity.class);
+                    startActivityForResult(i, PROPERTY_UPDATE);
+                } else
                     Toast.makeText(this, "Please login from user account to add property", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_my_adds:
@@ -210,6 +221,20 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case R.id.nav_logout:
                 PreferenceManager.getInstance().disposeAll(HomeActivity.this);
+
+                //TODO: fix it
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ServiceLocator.getService(AppDatabase.class).FavouriteDao().deleteAllFavourite();
+                        Intent intent = new Intent(HomeActivity.this, FavouriteAppWidget.class);
+                        intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+                        int ids[] = AppWidgetManager.getInstance(HomeActivity.this).getAppWidgetIds(new ComponentName(HomeActivity.this, FavouriteAppWidget.class));
+                        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+                        sendBroadcast(intent);
+                    }
+                }).start();
+
                 goToLogin();
                 finish();
 
@@ -252,10 +277,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onFragmentInteraction(PropertyModel property) {
-        //        launchFragment(new PropertyListingDetailFragment());
+
         Intent i = new Intent(HomeActivity.this, PropertyDetailActivity.class);
         i.putExtra("property", property);
-        startActivity(i);
+        startActivityForResult(i, PROPERTY_UPDATE);
     }
 
     public void setSearchOnTextListener(OnSearchTextListener listener) {
@@ -281,4 +306,19 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         //onSearchTextListener.onTextSubmit("");
         return false;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == PROPERTY_UPDATE) {
+            //property is updated from detail i.e. marked favourite.
+            if (data != null && data.getBooleanExtra(IAPIConstants.PROPERTY_UPDATE_INTENT, false)) {
+                PropertyListingFragment fragment = (PropertyListingFragment) this.getSupportFragmentManager().findFragmentByTag(AppConstants.TAG_FRAGMENT_PROPERTY_LISTING);
+                if (fragment != null && fragment.isVisible()) {
+                    fragment.callGetPropertyAPI("");
+                }
+            }
+        }
+    }
+
 }

@@ -24,6 +24,9 @@
             android:name=".register.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".property.addproperty.AddPropertyActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -33,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".property.PropertyDetailActivity"
+            android:name=".property.propertydetail.PropertyDetailActivity"
             android:label="@string/title_activity_property_detail"
             android:theme="@style/AppTheme" />
 
@@ -48,7 +51,7 @@
                 android:resource="@xml/picker_provider_paths" />
         </provider>
 
-        <activity android:name=".property.EditPropertyActivity" />
+        <activity android:name=".property.editproperty.EditPropertyActivity" />
 
         <receiver android:name=".widget.FavouriteAppWidget"
             >

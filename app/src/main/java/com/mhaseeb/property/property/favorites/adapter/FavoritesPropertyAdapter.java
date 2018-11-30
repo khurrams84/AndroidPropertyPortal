@@ -52,12 +52,13 @@ public class FavoritesPropertyAdapter extends RecyclerView.Adapter<RecyclerView.
         //Here you can fill your row view
         if (holder instanceof FavoritesPropertyAdapter.ViewHolder) {
             final Datum model = getItem(position);
-            ((ViewHolder) holder).tvPrice.setText(R.string.code_dollar + model.getProperty().getPrice());
+            ((ViewHolder) holder).tvPrice.setText("$" + model.getProperty().getPrice());
             ((ViewHolder) holder).tvTitle.setText(model.getProperty().getTitle());
             ((ViewHolder) holder).tvDescription.setText(model.getProperty().getAddress());
             ((ViewHolder) holder).tvType.setText(model.getProperty().getType());
             ((ViewHolder) holder).tvCategory.setText(model.getProperty().getCategory());
-            ((ViewHolder) holder).cbFavorites.setChecked(model.getProperty().isFavourite());
+//            ((ViewHolder) holder).cbFavorites.setChecked(model.getProperty().isFavourite());
+            ((ViewHolder) holder).cbFavorites.setVisibility(View.GONE);
 
             if (model.getProperty().getImages() != null && model.getProperty().getImages().size() > 0) {
                 ImageUtil.showPropertyImage(((ViewHolder) holder).ivMainImage, mContext, IAPIConstants.BASE_URL + model.getProperty().getImages().get(0).getImagePath());

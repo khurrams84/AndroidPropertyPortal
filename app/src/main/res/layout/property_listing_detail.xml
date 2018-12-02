@@ -28,15 +28,15 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="@dimen/standard_margin">
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/standard_margin">
 
                 <ImageView
                     android:id="@+id/ivEdit"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_toLeftOf="@id/cbFavorites"
-                    android:layout_marginRight="@dimen/small_margin"
+                    android:layout_toStartOf="@id/cbFavorites"
+                    android:layout_marginEnd="@dimen/small_margin"
                     android:src="@drawable/ic_edit"
                     android:visibility="gone"
                     android:contentDescription="@string/cd_edit_property_image" />
@@ -45,7 +45,7 @@
                     android:id="@+id/cbFavorites"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:button="@drawable/favorites_statelist"
                     android:padding="@dimen/small_margin" />
             </RelativeLayout>
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="@dimen/standard_margin"
+                android:layout_marginStart="@dimen/standard_margin"
                 android:background="@color/translucent_white"
                 android:padding="@dimen/standard_margin">
 

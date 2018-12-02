@@ -68,9 +68,9 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
      */
     private String getSelectedGender() {
         if (rbMale.isChecked())
-            return "MALE";
+            return getString(R.string.Male);
         else
-            return "FEMALE";
+            return getString(R.string.Female);
     }
 
     /**
@@ -80,43 +80,43 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
      */
     private boolean validate() {
         if (TextUtils.isEmpty(etFirstName.getText().toString().trim())) {
-            etFirstName.setError("First Name is required");
+            etFirstName.setError(getString(R.string.code_first_required));
             etFirstName.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etlastName.getText().toString().trim())) {
-            etlastName.setError("Last Name is required");
+            etlastName.setError(getString(R.string.code_last_required));
             etlastName.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etPhone.getText().toString().trim())) {
-            etPhone.setError("Phone no is required");
+            etPhone.setError(getString(R.string.code_phone_required));
             etPhone.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etEmail.getText().toString().trim())) {
-            etEmail.setError("Email is required");
+            etEmail.setError(getString(R.string.code_email_required));
             etEmail.requestFocus();
             return false;
         }
         if (!StringUtil.isValidEmail(etEmail.getText().toString().trim())) {
-            etEmail.setError("Invalid email address");
+            etEmail.setError(getString(R.string.code_invalid_email_required));
             etEmail.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etPassword.getText().toString().trim())) {
-            etPassword.setError("Password is required");
+            etPassword.setError(getString(R.string.code_password_required));
             etPassword.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etConfirmPassword.getText().toString().trim())) {
-            etConfirmPassword.setError("Confirm Password is required");
+            etConfirmPassword.setError(getString(R.string.code_confirm_password_required));
             etConfirmPassword.requestFocus();
             return false;
         }
         if (!etConfirmPassword.getText().toString().trim().equals(etPassword.getText().toString().trim())) {
-            Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.code_password_notmatched), Toast.LENGTH_SHORT).show();
             return false;
         }
 

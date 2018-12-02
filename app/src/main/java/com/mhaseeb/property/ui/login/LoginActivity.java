@@ -76,18 +76,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private boolean validate() {
 
         if (TextUtils.isEmpty(etEmail.getText().toString().trim())) {
-            etEmail.setError("Email is required");
+            etEmail.setError(getString(R.string.code_email_required));
             etEmail.requestFocus();
             return false;
         }
         if (!StringUtil.isValidEmail(etEmail.getText().toString().trim())) {
-            etEmail.setError("Invalid email address");
+            etEmail.setError(getString(R.string.code_invalid_email_required));
             etEmail.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etPassword.getText().toString().trim())) {
-            etPassword.setError("Password is required");
+            etPassword.setError(getString(R.string.code_password_required));
             etPassword.requestFocus();
             return false;
         }

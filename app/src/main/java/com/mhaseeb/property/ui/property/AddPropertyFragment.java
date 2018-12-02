@@ -198,43 +198,43 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
      */
     private boolean validate() {
         if (TextUtils.isEmpty(etTitle.getText().toString().trim())) {
-            etTitle.setError("Title is required");
+            etTitle.setError(getString(R.string.code_title_required));
             etTitle.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etDescription.getText().toString().trim())) {
-            etDescription.setError("Description is required");
+            etDescription.setError(getString(R.string.code_description_required));
             etDescription.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etPhone.getText().toString().trim())) {
-            etPhone.setError("Phone no is required");
+            etPhone.setError(getString(R.string.code_phone_required));
             etPhone.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etCity.getText().toString().trim())) {
-            etCity.setError("City is required");
+            etCity.setError(getString(R.string.code_city_required));
             etCity.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etArea.getText().toString().trim())) {
-            etArea.setError("Area is required");
+            etArea.setError(getString(R.string.code_area_required));
             etArea.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etLocation.getText().toString().trim())) {
-            etLocation.setError("Location is required");
+            etLocation.setError(getString(R.string.code_location_required));
             etLocation.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etAddress.getText().toString().trim())) {
-            etAddress.setError("Address is required");
+            etAddress.setError(getString(R.string.code_address_required));
             etAddress.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(etPrice.getText().toString().trim())) {
-            etPrice.setError("Price is required");
+            etPrice.setError(getString(R.string.code_price_required));
             etPrice.requestFocus();
             return false;
         }

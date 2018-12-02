@@ -100,5 +100,24 @@
 
     <string name="code_edit">Edit</string>
     <string name="code_dollar">$</string>
+    <string name="code_for_sale">For Sale</string>
+    <string name="code_for_rent">For Rent</string>
+
+    <string name="code_first_required">Title is required</string>
+    <string name="code_last_required">Title is required</string>
+    <string name="code_title_required">Title is required</string>
+    <string name="code_description_required">Description is required</string>
+    <string name="code_phone_required">Phone no is required</string>
+    <string name="code_city_required">City is required</string>
+    <string name="code_location_required">Location is required</string>
+    <string name="code_address_required">Address is required</string>
+    <string name="code_price_required">Price is required</string>
+    <string name="code_area_required">Area is required</string>
+
+    <string name="code_email_required">Email is required</string>
+    <string name="code_invalid_email_required">Invalid email address</string>
+    <string name="code_password_required">Password is required</string>
+    <string name="code_confirm_password_required">Confirm Password is required</string>
+    <string name="code_password_notmatched">Password does not match</string>
 
 </resources>

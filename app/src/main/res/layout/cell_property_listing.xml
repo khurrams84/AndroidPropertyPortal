@@ -29,8 +29,8 @@
                 android:id="@+id/cbFavorites"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="@dimen/standard_margin"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/standard_margin"
                 android:button="@drawable/favorites_statelist"
                 android:padding="@dimen/small_margin" />
 
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="@dimen/standard_margin"
+                android:layout_marginStart="@dimen/standard_margin"
                 android:background="@color/translucent_white"
                 android:padding="@dimen/standard_margin">
 

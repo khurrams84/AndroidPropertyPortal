@@ -81,8 +81,8 @@
     <string name="widget_type">Type</string>
     <string name="widget_category">Category:</string>
     <string name="Splash">Splash</string>
-    <string name="Male">Male</string>
-    <string name="Female">Female</string>
+    <string name="Male">MALE</string>
+    <string name="Female">FEMALE</string>
     <string name="nav_home">Home</string>
     <string name="nav_add_property">Add Property</string>
     <string name="nav_my_ads">My Ads</string>

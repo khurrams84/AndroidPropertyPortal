@@ -3,7 +3,7 @@ package com.mhaseeb.property.ui.common.config;
 public interface IAPIConstants {
 
 
-    String BASE_URL = "http://timetobuy.pk/property_app/public/";
+    String BASE_URL = "https://timetobuy.pk/property/public/";
     String URL_REGISTER = "user/signup";
     String URL_LOGIN = "user/login";
     String URL_ADD_PROPERTY = "user/property";

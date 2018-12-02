@@ -95,7 +95,7 @@
     <string name="cd_profile_pic">this is a profile pic of user</string>
     <string name="cd_splash">This is a splash screen</string>
     <string name="cd_property_image">This is selected property image</string>
-    <string name="cd_edit_property_image">This is selected property imagef or edit</string>
+    <string name="cd_edit_property_image">This is selected property image or edit</string>
     <string name="cd_home">GO Home</string>
 
     <string name="code_edit">Edit</string>
@@ -119,5 +119,11 @@
     <string name="code_password_required">Password is required</string>
     <string name="code_confirm_password_required">Confirm Password is required</string>
     <string name="code_password_notmatched">Password does not match</string>
+
+    <string name="toast_Please_click_BACK_again_to_exit">Please click BACK again to exit</string>
+    <string name="toast_Please_login_from_user_account_to_add_property">Please login from user account to add property</string>
+    <string name="toast_Cannot_connect_to_the_server">Cannot connect to the server</string>
+    <string name="toast_Please_select_image">Please select image</string>
+    <string name="toast_Property_Added_Successfully">Property Added Successfully</string>
 
 </resources>

@@ -119,7 +119,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             }
 
             this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_Please_click_BACK_again_to_exit), Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(new Runnable() {
 
@@ -199,19 +199,19 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 if (!PreferenceManager.getInstance().getIsGuestLoggedIn(this))
                     launchFragment(new AddPropertyFragment(), AppConstants.TAG_FRAGMENT_ADD_PROPERTY);
                 else
-                    Toast.makeText(this, "Please login from user account to add property", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_Please_login_from_user_account_to_add_property), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_my_adds:
                 if (!PreferenceManager.getInstance().getIsGuestLoggedIn(this))
                     launchFragment(new UsersPropertyListingFragment(), AppConstants.TAG_FRAGMENT_MY_ADS);
                 else
-                    Toast.makeText(this, "Please login from user account to add property", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_Please_login_from_user_account_to_add_property), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_favorites:
                 if (!PreferenceManager.getInstance().getIsGuestLoggedIn(this))
                     launchFragment(new FavoritesPropertyFragment(), AppConstants.TAG_FRAGMENT_FAVORITES);
                 else
-                    Toast.makeText(this, "Please login from user account to add property", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_Please_login_from_user_account_to_add_property), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
                 PreferenceManager.getInstance().disposeAll(HomeActivity.this);

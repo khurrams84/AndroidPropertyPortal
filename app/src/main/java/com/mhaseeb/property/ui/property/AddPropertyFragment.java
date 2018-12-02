@@ -240,7 +240,7 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
         }
 
         if (image == null) {
-            Toast.makeText(getActivity(), "Please select image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.toast_Please_select_image), Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -324,14 +324,14 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
                         ((HomeActivity) getContext()).hideLoading();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                     ((HomeActivity) getContext()).hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<PropertyResponseModel> call, Throwable t) {
-                Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                 ((HomeActivity) getContext()).hideLoading();
 
             }
@@ -356,7 +356,7 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
                     if (response.body() != null && response.body().getStats() == true && response.body().getData() != null) {
                         ((HomeActivity) getContext()).hideLoading();
 //                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getContext(), "Property Added Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getString(R.string.toast_Property_Added_Successfully), Toast.LENGTH_SHORT).show();
                         getActivity().onBackPressed();
 
                     } else if (response.body().getStats() == false) {
@@ -364,14 +364,14 @@ public class AddPropertyFragment extends Fragment implements AdapterView.OnItemS
                         ((HomeActivity) getContext()).hideLoading();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                     ((HomeActivity) getContext()).hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<PropertyResponseModel> call, Throwable t) {
-                Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                 ((HomeActivity) getContext()).hideLoading();
 
             }

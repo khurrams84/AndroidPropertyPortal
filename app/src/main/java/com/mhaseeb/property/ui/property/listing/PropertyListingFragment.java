@@ -146,7 +146,7 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
                         ((HomeActivity) getContext()).hideLoading();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                     ((HomeActivity) getContext()).hideLoading();
                 }
 
@@ -154,7 +154,7 @@ public class PropertyListingFragment extends Fragment implements OnSearchTextLis
 
             @Override
             public void onFailure(Call<GetUserPropertiesResponseModel> call, Throwable t) {
-                Toast.makeText(getContext(), "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                 ((HomeActivity) getContext()).hideLoading();
             }
         });

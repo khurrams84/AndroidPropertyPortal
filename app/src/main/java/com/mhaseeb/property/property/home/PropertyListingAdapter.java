@@ -95,7 +95,7 @@ public class PropertyListingAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         favoritesModel.setUserId(Integer.valueOf(PreferenceManager.getInstance().getId(mContext)));
                         propertyListingFragment.onFavoritesButtonPressed(favoritesModel);
                     } else
-                        Toast.makeText(mContext, "Please login from user account to add property", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,  R.string.toast_Please_login_from_user_account_to_add_property, Toast.LENGTH_SHORT).show();
                 }
             });
 

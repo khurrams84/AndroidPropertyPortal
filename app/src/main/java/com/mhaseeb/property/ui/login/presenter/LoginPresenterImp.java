@@ -3,6 +3,7 @@ package com.mhaseeb.property.ui.login.presenter;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.mhaseeb.property.R;
 import com.mhaseeb.property.ui.common.api.ApiClient;
 import com.mhaseeb.property.ui.common.preferences.PreferenceManager;
 import com.mhaseeb.property.ui.home.HomeActivity;
@@ -59,7 +60,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                         ((LoginActivity) context).hideLoading();
                     }
                 } else {
-                    Toast.makeText(context, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.toast_Cannot_connect_to_the_server, Toast.LENGTH_SHORT).show();
                     ((LoginActivity) context).hideLoading();
                     loginView.onLoginFailure();
                 }
@@ -69,7 +70,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
-                Toast.makeText(context, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toast_Cannot_connect_to_the_server, Toast.LENGTH_SHORT).show();
                 ((LoginActivity) context).hideLoading();
                 loginView.onLoginFailure();
             }

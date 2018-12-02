@@ -209,7 +209,7 @@ public class EditPropertyActivity extends BaseActivity implements AdapterView.On
         }
 
         if (propertyModel.getImages() == null && image == null) {
-            Toast.makeText(this, "Please select image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_Please_select_image), Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -298,14 +298,14 @@ public class EditPropertyActivity extends BaseActivity implements AdapterView.On
                         hideLoading();
                     }
                 } else {
-                    Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditPropertyActivity.this, getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                     hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<PropertyResponseModel> call, Throwable t) {
-                Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditPropertyActivity.this, getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                 hideLoading();
 
             }
@@ -334,14 +334,14 @@ public class EditPropertyActivity extends BaseActivity implements AdapterView.On
                         hideLoading();
                     }
                 } else {
-                    Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditPropertyActivity.this, getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                     hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<PropertyResponseModel> call, Throwable t) {
-                Toast.makeText(EditPropertyActivity.this, "Cannot connect to the server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditPropertyActivity.this, getString(R.string.toast_Cannot_connect_to_the_server), Toast.LENGTH_SHORT).show();
                 hideLoading();
 
             }
